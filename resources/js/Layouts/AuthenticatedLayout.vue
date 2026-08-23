@@ -27,7 +27,7 @@ const showingNavigationDropdown = ref(false);
                         </div>
                         <div class="flex flex-col">
                             <span class="font-extrabold text-base text-white tracking-wide group-hover:text-emerald-300 transition-colors">
-                                SIKEMBANG
+                                Pandu HD
                             </span>
                             <span class="text-[10px] font-semibold text-emerald-400/90 tracking-wider uppercase">
                                 RSUD Ngimbang
