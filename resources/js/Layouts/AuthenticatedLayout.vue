@@ -156,7 +156,7 @@ const showingNavigationDropdown = ref(false);
                         <ApplicationLogo class="block h-5 w-auto fill-current text-emerald-300" />
                     </div>
                     <div class="flex flex-col">
-                        <span class="font-extrabold text-sm text-white">SIKEMBANG</span>
+                        <span class="font-extrabold text-sm text-white">PANDU HD</span>
                         <span class="text-[9px] text-emerald-400">RSUD Ngimbang</span>
                     </div>
                 </Link>
