@@ -44,6 +44,7 @@ class UserController extends Controller
             ->through(fn ($user) => [
                 'id' => $user->id,
                 'name' => $user->name,
+                'no_rm'    => $user->no_rm,
                 'email' => $user->email,
                 'role' => $user->role ?? 'pegawai',
                 'created_at' => $user->created_at->format('d M Y'),
@@ -104,6 +105,7 @@ class UserController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'role' => $request->role,
+                'no_rm' => $request->no_rm,
                 'password' => Hash::make($request->password),
             ]);
 
@@ -175,6 +177,7 @@ class UserController extends Controller
             $user->name = $request->name;
             $user->email = $request->email;
             $user->role = $request->role;
+            $user->no_rm = $request->no_rm;
 
             if ($request->filled('password')) {
                 $user->password = Hash::make($request->password);

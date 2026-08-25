@@ -5,8 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Pasien extends Model
+class Pasien extends Authenticatable
 {
     use HasFactory;
 
@@ -57,5 +58,14 @@ class Pasien extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+    public function getAuthPassword()
+    {
+        return null; // Pasien tidak menggunakan password
+    }
+
+    public function getRememberTokenName()
+    {
+        return null; // Pasien tidak menggunakan remember token
     }
 }

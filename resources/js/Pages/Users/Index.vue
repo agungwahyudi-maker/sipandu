@@ -129,6 +129,7 @@ const closeModal = () => {
                                 <th class="py-3.5 px-6">Pengguna</th>
                                 <th class="py-3.5 px-6">Role / Jabatan</th>
                                 <th class="py-3.5 px-6">Status</th>
+                                <th class="py-3.5 px-6">No RM</th>
                                 <th class="py-3.5 px-6">Tgl Terdaftar</th>
                                 <th class="py-3.5 px-6 text-right">Aksi</th>
                             </tr>
@@ -174,6 +175,9 @@ const closeModal = () => {
                                     </span>
                                 </td>
 
+                                <td class="py-4 px-6 text-slate-500 font-medium">
+                                    {{ user.no_rm }}
+                                </td>
                                 <!-- Tanggal -->
                                 <td class="py-4 px-6 text-slate-500 font-medium">
                                     {{ user.created_at }}

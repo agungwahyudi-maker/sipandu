@@ -1,4 +1,5 @@
 <script setup>
+import { computed } from 'vue';
 import Checkbox from '@/Components/Checkbox.vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import InputError from '@/Components/InputError.vue';
@@ -17,9 +18,14 @@ defineProps({
 });
 
 const form = useForm({
-    email: '',
+    login: '',
     password: '',
     remember: false,
+});
+
+// Deteksi otomatis: tampilkan input password HANYA jika memasukkan Email
+const isEmailInput = computed(() => {
+    return form.login.includes('@');
 });
 
 const submit = () => {
@@ -38,32 +44,35 @@ const submit = () => {
         </div>
 
         <form @submit.prevent="submit">
+            <!-- Input Email / No RM -->
             <div>
-                <InputLabel for="email" value="Email" />
+                <InputLabel for="login" value="Email (Petugas) / No. RM (Pasien)" />
 
                 <TextInput
-                    id="email"
-                    type="email"
+                    id="login"
+                    type="text"
                     class="mt-1 block w-full"
-                    v-model="form.email"
+                    v-model="form.login"
                     required
                     autofocus
-                    autocomplete="username"
+                    placeholder="Masukkan Email atau Nomor RM"
                 />
 
-                <InputError class="mt-2" :message="form.errors.email" />
+                <InputError class="mt-2" :message="form.errors.login" />
             </div>
 
-            <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+            <!-- Input Password (Otomatis Sembunyi Jika Input No. RM) -->
+            <div v-if="isEmailInput" class="mt-4">
+                <InputLabel for="password" value="Password Petugas" />
 
                 <TextInput
                     id="password"
                     type="password"
                     class="mt-1 block w-full"
                     v-model="form.password"
-                    required
+                    :required="isEmailInput"
                     autocomplete="current-password"
+                    placeholder="Masukkan Password"
                 />
 
                 <InputError class="mt-2" :message="form.errors.password" />
@@ -72,15 +81,13 @@ const submit = () => {
             <div class="mt-4 block">
                 <label class="flex items-center">
                     <Checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="ms-2 text-sm text-gray-600"
-                        >Remember me</span
-                    >
+                    <span class="ms-2 text-sm text-gray-600">Remember me</span>
                 </label>
             </div>
 
             <div class="mt-4 flex items-center justify-end">
                 <Link
-                    v-if="canResetPassword"
+                    v-if="canResetPassword && isEmailInput"
                     :href="route('password.request')"
                     class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                 >

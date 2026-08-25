@@ -67,12 +67,13 @@ const showingNavigationDropdown = ref(false);
                         Log Jurnal Pasien
                     </NavLink>
                     <!-- Section: Manajemen Sistem -->
-                    <div class="pt-4 px-3.5 py-2 text-[10px] font-bold uppercase tracking-widest text-emerald-500/80">
+                    <div v-if="$page.props.auth.user?.role !== 'pasien'" class="pt-4 px-3.5 py-2 text-[10px] font-bold uppercase tracking-widest text-emerald-500/80">
                         Manajemen Sistem
                     </div>
 
                     <!-- Menu Kelola User -->
                     <NavLink 
+                        v-if="$page.props.auth.user?.role !== 'pasien'"
                         :href="route('users.index')" 
                         :active="route().current('users.*')"
                     >
@@ -82,9 +83,6 @@ const showingNavigationDropdown = ref(false);
                             </svg>
                         </div>
                         <span class="tracking-wide">Kelola User</span>
-
-                        <!-- Indicator Pill Active -->
-                        <span v-if="route().current('users.*')" class="absolute right-3 w-1.5 h-5 bg-teal-300 rounded-full shadow-sm"></span>
                     </NavLink>
                 </nav>
             </div>

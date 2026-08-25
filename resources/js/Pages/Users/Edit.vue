@@ -68,6 +68,18 @@ const submit = () => {
                         />
                         <InputError class="mt-2" :message="form.errors.name" />
                     </div>
+                    <div>
+                        <InputLabel for="no_rm" value="Nomor RM" />
+                        <TextInput
+                            id="no_rm"
+                            type="number"
+                            class="mt-1 block w-full"
+                            v-model="form.no_rm"
+                            required
+                            autofocus
+                        />
+                        <InputError class="mt-2" :message="form.errors.no_rm" />
+                    </div>
 
                     <!-- Email -->
                     <div>
