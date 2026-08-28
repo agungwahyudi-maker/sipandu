@@ -22,8 +22,8 @@ const showingNavigationDropdown = ref(false);
                 <!-- Brand / Logo Header -->
                 <div class="h-20 flex items-center px-6 border-b border-emerald-900/60 bg-emerald-900/30">
                     <Link :href="route('dashboard')" class="flex items-center gap-3.5 group">
-                        <div class="p-2.5 bg-emerald-600/30 border border-emerald-500/40 rounded-xl text-emerald-400 group-hover:bg-emerald-600/50 transition-all duration-300 shadow-inner">
-                            <ApplicationLogo class="block h-6 w-auto fill-current text-emerald-400" />
+                        <div class="p-1 bg-emerald-600/30 border border-emerald-500/40 rounded-xl text-emerald-400 group-hover:bg-emerald-600/50 transition-all duration-300 shadow-inner">
+                            <ApplicationLogo class="block h-10 w-auto fill-current text-emerald-400" />
                         </div>
                         <div class="flex flex-col">
                             <span class="font-extrabold text-base text-white tracking-wide group-hover:text-emerald-300 transition-colors">
