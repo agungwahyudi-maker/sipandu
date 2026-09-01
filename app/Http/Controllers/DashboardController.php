@@ -46,6 +46,7 @@ class DashboardController extends Controller
                     'nama' => $jurnal->pasien->user->name ?? 'Pasien',
                     'status' => $jurnal->kondisi_akses,
                     'tensi' => $jurnal->tekanan_darah ?? '-',
+                    'no_hp_pasien' => $jurnal->pasien->no_hp_pasien ?? '-',
                     'minum' => $jurnal->total_minum . ' ml',
                     'keluhan' => $jurnal->gejala_sesak ? 'Sesak Napas Berat' : ($jurnal->gejala_kram ? 'Kram Otot' : 'Akses Bermasalah'),
                 ];
